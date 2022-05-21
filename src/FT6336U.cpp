@@ -61,12 +61,9 @@ uint8_t FT6336U::read_touch_number(void) {
 // Touch 1 functions
 uint16_t FT6336U::read_touch1_x(void) {
     uint8_t read_buf[2];
-    read_buf[0] = readByte(FT6336U_ADDR_TOUCH1_X) ;
+    read_buf[0] = readByte(FT6336U_ADDR_TOUCH1_X);
     read_buf[1] = readByte(FT6336U_ADDR_TOUCH1_X + 1);
-	//read_buf[0] <<= 8;
 	return ((read_buf[0] & 0x0f) << 8) | read_buf[1];
-	//return read_buf[0] | read_buf[1];
-	//return ((read_buf[1] & 0x0f) << 8);
 }
 uint16_t FT6336U::read_touch1_y(void) {
     uint8_t read_buf[2];
@@ -89,11 +86,9 @@ uint8_t FT6336U::read_touch1_misc(void) {
 // Touch 2 functions
 uint16_t FT6336U::read_touch2_x(void) {
     uint8_t read_buf[2];
-    read_buf[0] = readByte(FT6336U_ADDR_TOUCH2_X) ;
+    read_buf[0] = readByte(FT6336U_ADDR_TOUCH2_X);
     read_buf[1] = readByte(FT6336U_ADDR_TOUCH2_X + 1);
-	//read_buf[0] <<= 8;
 	return ((read_buf[0] & 0x0f) << 8) | read_buf[1];
-	//return ((read_buf[1] & 0x0f) << 8);
 }
 uint16_t FT6336U::read_touch2_y(void) {
     uint8_t read_buf[2];
@@ -226,19 +221,19 @@ FT6336U_TouchPointType FT6336U::scan(void){
     else if(touchPoint.touch_count == 1) {
         uint8_t id1 = read_touch1_id(); // id1 = 0 or 1
         touchPoint.tp[id1].status = (touchPoint.tp[id1].status == release) ? touch : stream; 
-        touchPoint.tp[id1].x = 240-read_touch1_x(); 
-        touchPoint.tp[id1].y = 320read_touch1_y(); 
+        touchPoint.tp[id1].x = read_touch1_x(); 
+        touchPoint.tp[id1].y = read_touch1_y(); 
         touchPoint.tp[~id1 & 0x01].status = release; 
     }
     else {
         uint8_t id1 = read_touch1_id(); // id1 = 0 or 1
         touchPoint.tp[id1].status = (touchPoint.tp[id1].status == release) ? touch : stream; 
-        touchPoint.tp[id1].x = 240-read_touch1_x(); 
-        touchPoint.tp[id1].y = 320-read_touch1_y(); 
+        touchPoint.tp[id1].x = read_touch1_x(); 
+        touchPoint.tp[id1].y = read_touch1_y(); 
         uint8_t id2 = read_touch2_id(); // id2 = 0 or 1(~id1 & 0x01)
         touchPoint.tp[id2].status = (touchPoint.tp[id2].status == release) ? touch : stream; 
-        touchPoint.tp[id2].x = 240-read_touch2_x(); 
-        touchPoint.tp[id2].y = 320-read_touch2_y(); 
+        touchPoint.tp[id2].x = read_touch2_x(); 
+        touchPoint.tp[id2].y = read_touch2_y(); 
     }
 
     return touchPoint; 
