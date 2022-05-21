@@ -66,7 +66,7 @@ uint16_t FT6336U::read_touch1_x(void) {
 	//read_buf[0] <<= 8;
 	//return ((read_buf[0] & 0x0f) << 8) | read_buf[1];
 	//return read_buf[0] | read_buf[1];
-	return ((read_buf[0] & 0x0f) << 8);
+	return ((read_buf[1] & 0x0f) << 8);
 }
 uint16_t FT6336U::read_touch1_y(void) {
     uint8_t read_buf[2];
@@ -93,7 +93,7 @@ uint16_t FT6336U::read_touch2_x(void) {
     read_buf[1] = readByte(FT6336U_ADDR_TOUCH2_X + 1);
 	//read_buf[0] <<= 8;
 	//return ((read_buf[0] & 0x0f) << 8) | read_buf[1];
-	return ((read_buf[0] & 0x0f) << 8);
+	return ((read_buf[1] & 0x0f) << 8);
 }
 uint16_t FT6336U::read_touch2_y(void) {
     uint8_t read_buf[2];
