@@ -61,14 +61,14 @@ uint8_t FT6336U::read_touch_number(void) {
 // Touch 1 functions
 uint16_t FT6336U::read_touch1_x(void) {
     uint8_t read_buf[2];
-    read_buf[0] = readByte(FT6336U_ADDR_TOUCH1_X * 6);
-    read_buf[1] = readByte(FT6336U_ADDR_TOUCH1_X + 1 * 6);
+    read_buf[0] = readByte(FT6336U_ADDR_TOUCH1_X);
+    read_buf[1] = readByte(FT6336U_ADDR_TOUCH1_X + 1);
 	return ((read_buf[0] & 0x0f) << 8) | read_buf[1];
 }
 uint16_t FT6336U::read_touch1_y(void) {
     uint8_t read_buf[2];
-    read_buf[0] = readByte(FT6336U_ADDR_TOUCH1_Y * 6);
-    read_buf[1] = readByte(FT6336U_ADDR_TOUCH1_Y + 1 * 6);
+    read_buf[0] = readByte(FT6336U_ADDR_TOUCH1_Y);
+    read_buf[1] = readByte(FT6336U_ADDR_TOUCH1_Y + 1);
 	return ((read_buf[0] & 0x0f) << 8) | read_buf[1];
 }
 uint8_t FT6336U::read_touch1_event(void) {
@@ -86,14 +86,14 @@ uint8_t FT6336U::read_touch1_misc(void) {
 // Touch 2 functions
 uint16_t FT6336U::read_touch2_x(void) {
     uint8_t read_buf[2];
-    read_buf[0] = readByte(FT6336U_ADDR_TOUCH2_X + 12);
-    read_buf[1] = readByte(FT6336U_ADDR_TOUCH2_X + 1 + 12);
+    read_buf[0] = readByte(FT6336U_ADDR_TOUCH2_X);
+    read_buf[1] = readByte(FT6336U_ADDR_TOUCH2_X + 1);
 	return ((read_buf[0] & 0x0f) << 8) | read_buf[1];
 }
 uint16_t FT6336U::read_touch2_y(void) {
     uint8_t read_buf[2];
-    read_buf[0] = readByte(FT6336U_ADDR_TOUCH2_Y + 12);
-    read_buf[1] = readByte(FT6336U_ADDR_TOUCH2_Y + 1 + 12);
+    read_buf[0] = readByte(FT6336U_ADDR_TOUCH2_Y);
+    read_buf[1] = readByte(FT6336U_ADDR_TOUCH2_Y + 1);
 	return ((read_buf[0] & 0x0f) << 8) | read_buf[1];
 }
 uint8_t FT6336U::read_touch2_event(void) {
